@@ -85,7 +85,7 @@ print("""
 """ )
 voit = u"%s" % cgi.escape(form['voit'].value.decode('utf8'))
 
-print("Вы проголосовали за: %s" % voit)
+print("<p>Вы проголосовали за: %s</p>" % voit)
 
 print("Необходимо заполнить все поля")
 print("</body></html>")
