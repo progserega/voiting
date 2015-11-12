@@ -56,6 +56,7 @@ font-size: 150%;
 <body><h1>Голосование</h1>
 """)
 print("""
+<form method=POST action="voit.cgi">
 <div align="left">
 <P><B>%s</B><br>
 		""" % conf.voit_descr)
