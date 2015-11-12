@@ -63,7 +63,7 @@ print("""
 
 for name in conf.voit_names:
 	print ("""
-<input type="radio" name="voit" value="filial1">%s<br>
+<input type="radio" name="voit" value="%(name)s">%(name)s<br>
 """ % name )
 print ("""
 </div>
