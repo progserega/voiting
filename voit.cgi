@@ -83,7 +83,11 @@ print("""
 </head>
 <body>
 """ )
-voit = u"%s" % cgi.escape(form['voit'].value.decode('utf8'))
+try:
+	voit = u"%s" % cgi.escape(form['voit'].value.decode('utf8'))
+except:
+	print("Необходимо выбрать хотя бы один вариант!")
+	print("</body></html>")
 
 print("<p>Вы проголосовали за: %s</p>" % voit.encode('utf8'))
 
