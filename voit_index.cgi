@@ -61,10 +61,10 @@ print("""
 <P><B>%s</B><br>
 		""" % conf.voit_descr)
 
-for name in conf.voit_names:
+for variant_name in conf.voit_names:
 	print ("""
-<input type="radio" name="voit" value="%(name)s">%(name)s<br>
-""" % name )
+<input type="radio" name="voit" value="%(variant_name)s">%(variant_name)s<br>
+""" % {"variant_name":variant_name} )
 print ("""
 </div>
 
