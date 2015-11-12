@@ -66,56 +66,27 @@ def load_data():
 #home_dir=os.path.expanduser("~/.time_logger")
 home_dir="/tmp/votes.data"
 
-print ("""
+
+# ========== main ==============
+form = cgi.FieldStorage()
+
+web_user_agent=os.getenv("HTTP_USER_AGENT")
+web_user_addr=os.getenv("REMOTE_ADDR")
+web_user_host=os.getenv("REMOTE_HOST")
+web_user_name=os.getenv('AUTHENTICATE_SAMACCOUNTNAME')
+
+print("""
 <html>
-<HEAD>
-<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-<TITLE>Голосование</TITLE>
-<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Linux)">
-<META NAME="AUTHOR" CONTENT="Сергей Семёнов">
-<META NAME="CREATED" CONTENT="20100319;10431100">
-<META NAME="CHANGEDBY" CONTENT="Сергей Семёнов">
-<META NAME="CHANGED" CONTENT="20100319;10441400">
-<STYLE TYPE="text/css">
-<!--
-@page { size: 21cm 29.7cm; margin: 2cm }
-P { margin-bottom: 0.21cm }
--->
-</STYLE>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+<title>Результат выполнения</title>
+</head>
+<body>
+""" )
+voit = u"%s" % cgi.escape(form['voit'].value.decode('utf8'))
 
-<style>
-.normaltext {
-}
-</style>
-<style>
-.ele_null {
-color: red; /* Красный цвет выделения */
-}
-</style>
-<style>
-.selected_node {
-color: green; /* Зелёный цвет выделения */
-background: #D9FFAD;
-font-size: 150%;
-}
-</style>
+print("Вы проголосовали за: %s" % voit)
 
-</HEAD>
-
-<body><h1>Добавление нового пользователя в домен</h1>
-
-<form method=POST action="voit.cgi">
-<P><B>Фамилия:</B>
-<P><input type=text name=user_familia>
-
-<P><B>Имя:</B>
-<P><input type=text name=user_name>
-
-<P><B>Отчество:</B>
-<P><input type=text name=user_otchestvo>
-
-<P><B>Описание (отдел, район. Например: '(ШРЭС) инженер 2-й категории'):</B>
-<P><input type=text name=user_description>
-
-		""")
+print("Необходимо заполнить все поля")
+print("</body></html>")
 

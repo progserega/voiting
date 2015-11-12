@@ -55,24 +55,24 @@ font-size: 150%;
 
 <body><h1>Голосование</h1>
 """)
-print(""")
+print("""
 <div align="left">
 <P><B>%s</B><br>
 		""" % conf.voit_descr)
 
 for name in conf.voit_names:
 	print ("""
-<input type="radio" name="ou_name" value="filial1">%s<br>
+<input type="radio" name="voit" value="filial1">%s<br>
 """ % name )
-print (""")
+print ("""
 </div>
 
 <P><input type=submit>
 </form>
 
-<p>Посмотреть список пользователей можно по 
+<p>Посмотреть текущий результат голосования можно по ссылке:
 <a target="_self" 
-href="show_user_ad_list.cgi"
+href="show_voiting.cgi"
 >
 ссылке
 </a>.
