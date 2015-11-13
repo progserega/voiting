@@ -88,7 +88,7 @@ for user in voit_data["users"]:
 	if voit in result:
 		result[voit]+=1
 	else:
-		result[voit]=0
+		result[voit]=1
 print("""
 		<h1>Результаты голосования:</h1>
 		<TABLE BORDER>
