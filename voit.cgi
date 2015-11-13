@@ -90,6 +90,8 @@ except:
 
 voit_data=load_data()
 
+if conf.DEBUG:
+	print("web_user_name=%s" % web_user_name)
 if web_user_name in voit_data:
 	print("<h1>Ваш голос учтён!</h1>")
 	print("<p>Ранее Вы голосовали за: %s</p>" % voit_data["users"][web_user_name].voit.encode('utf8'))
