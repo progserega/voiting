@@ -90,7 +90,7 @@ for user in voit_data["users"]:
 	else:
 		result[voit]=0
 print("""
-		<h1>Результаты голосования:</h1>")
+		<h1>Результаты голосования:</h1>
 		<TABLE BORDER>
 		<TR>    
 				<TH COLSPAN=19>%(name)s</TH>
