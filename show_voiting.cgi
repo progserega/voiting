@@ -11,17 +11,6 @@ import sendemail
 import pickle
 import config as conf
 
-
-def save_data(data):
-	if conf.DEBUG:
-		print("%s/session.data" % conf.store_path)
-
-	data_file=open("%s/session.data" % conf.store_path,"wb")
-	if conf.DEBUG:
-		print("DEBUG: data_file:", data_file)
-	pickle.dump(data,data_file)
-	data_file.close()
-
 def load_data():
 	tmp_data_file="%s/session.data" % conf.store_path
 	data={}
@@ -29,7 +18,16 @@ def load_data():
 	if os.path.exists(tmp_data_file):
 		if conf.DEBUG:
 			print("DEBUG: Загружаем файл промежуточных данных: '%s'" % tmp_data_file)
-		data_file = open(tmp_data_file,'rb')
+		try:
+			data_file = open(tmp_data_file,'rb')
+			if conf.DEBUG:
+				print("DEBUG: try lock file for read")
+			fcntl.flock(data_file.fileno(), fcntl.LOCK_EX)
+			if conf.DEBUG:
+				print("DEBUG: success lock file for write")
+		except:
+		 	print("error oepn/lock file")
+		 	sys.exit(1)
 		data=pickle.load(data_file)
 		data_file.close()
 		if conf.DEBUG:
@@ -58,7 +56,6 @@ def load_data():
 		data["users"]={}
 
 	return data
-
 
 #============== main() ===================
 #home_dir=os.path.expanduser("~/.time_logger")
