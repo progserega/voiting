@@ -84,7 +84,7 @@ print("""
 # Подсчёт:
 result={}
 for user in voit_data["users"]:
-	voit=voit_data["users"][user][voit]
+	voit=voit_data["users"][user]["voit"]
 	if voit in result:
 		result[voit]+=1
 	else:
