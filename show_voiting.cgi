@@ -22,11 +22,14 @@ def load_data():
 			data_file = open(tmp_data_file,'rb')
 			if conf.DEBUG:
 				print("DEBUG: try lock file for read")
+		except:
+		 	print("error open file")
+		try:
 			fcntl.flock(data_file.fileno(), fcntl.LOCK_EX)
 			if conf.DEBUG:
 				print("DEBUG: success lock file for write")
 		except:
-		 	print("error oepn/lock file")
+		 	print("error lock file")
 		 	sys.exit(1)
 		data=pickle.load(data_file)
 		data_file.close()
