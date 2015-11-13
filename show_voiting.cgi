@@ -100,7 +100,7 @@ print("""
 				<TH COLSPAN=1>Вариант</TH>
 				<TH COLSPAN=1>Количество проголосовавших</TH>
 		</TR>
-		""" % conf.voit_descr)
+		""" % {"name":conf.voit_descr})
 index=1
 for var in result:
 	print("""<TR>
