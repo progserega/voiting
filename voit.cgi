@@ -87,6 +87,7 @@ except:
 	print("<h1>Вы НЕ ПРОГОЛОСОВАЛИ!</h1>")
 	print("Необходимо выбрать хотя бы один вариант!")
 	print("</body></html>")
+	sys.exit(1)
 
 if web_user_name in voit_data:
 	print("<h1>Ваш голос учтён!</h1>")
