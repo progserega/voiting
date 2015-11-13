@@ -10,6 +10,7 @@ import logger as log
 import sendemail
 import pickle
 import config as conf
+import sys
 
 def load_data():
 	tmp_data_file="%s/session.data" % conf.store_path
