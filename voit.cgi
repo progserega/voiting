@@ -10,7 +10,7 @@ import logger as log
 import sendemail
 import pickle
 import config as conf
-
+import fcntl
 
 def save_data(data):
 	if conf.DEBUG:
@@ -18,7 +18,15 @@ def save_data(data):
 
 	data_file=open("%s/session.data" % conf.store_path,"wb")
 	if conf.DEBUG:
+		print("DEBUG: try lock file for write")
+	fcntl.flock(data_file.fileno(), fcntl.LOCK_EX)
+	if conf.DEBUG:
+		print("DEBUG: success lock file for write")
+	if conf.DEBUG:
 		print("DEBUG: data_file:", data_file)
+		print("DEBUG: start sleep(10)")
+		time.sleep(10)
+		print("DEBUG: end sleep(10)")
 	pickle.dump(data,data_file)
 	data_file.close()
 
@@ -30,6 +38,11 @@ def load_data():
 		if conf.DEBUG:
 			print("DEBUG: Загружаем файл промежуточных данных: '%s'" % tmp_data_file)
 		data_file = open(tmp_data_file,'rb')
+		if conf.DEBUG:
+			print("DEBUG: try lock file for read")
+		fcntl.flock(data_file.fileno(), fcntl.LOCK_EX)
+		if conf.DEBUG:
+			print("DEBUG: success lock file for write")
 		data=pickle.load(data_file)
 		data_file.close()
 		if conf.DEBUG:
