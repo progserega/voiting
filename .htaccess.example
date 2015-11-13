@@ -1,0 +1,24 @@
+Options FollowSymLinks ExecCGI
+DirectoryIndex voit_index.cgi
+
+<Files "config.py">
+Order Deny,Allow
+Deny from all
+</Files>
+
+AuthType Basic
+AuthBasicProvider   ldap
+AuthzLDAPAuthoritative off
+AuthName "Use domain login and password"
+
+AuthLDAPURL "ldap://server:3268/dc=company,,dc=ru?sAMAccountName?sub?(objectClass=*)"
+AuthLDAPBindDN "domain_user@company.ru"
+AuthLDAPBindPassword "domain_user_passwd"
+AuthUserFile /dev/null
+
+#require group CN=RBL_DEPT_340-SIT,DC=company,DC=ru
+#require group CN=RBL_DEPT_340-SIT
+
+# access to web interface:
+#require user domain_user_name1 domain_user_name2
+
