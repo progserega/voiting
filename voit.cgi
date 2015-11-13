@@ -94,7 +94,7 @@ if conf.DEBUG:
 	print("web_user_name=%s" % web_user_name)
 if web_user_name in voit_data["users"]:
 	print("<h1>Ваш голос учтён!</h1>")
-	print("<p>Ранее Вы голосовали за: %s</p>" % voit_data["users"][web_user_name].voit.encode('utf8'))
+	print("<p>Ранее Вы голосовали за: %s</p>" % voit_data["users"][web_user_name]["voit"].encode('utf8'))
 	print("<p>Теперь Вы изменили свой выбор на: %s</p>" % voit.encode('utf8'))
 	voit_data["users"][web_user_name]["voit"]=voit
 	save_data(voit_data)
