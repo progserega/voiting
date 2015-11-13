@@ -9,7 +9,7 @@ import subprocess
 import logger as log
 import sendemail
 import pickle
-
+import config as conf
 
 
 def save_data(data):
