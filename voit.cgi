@@ -63,7 +63,6 @@ def load_data():
 #============== main() ===================
 #home_dir=os.path.expanduser("~/.time_logger")
 
-voit_data=load_data()
 
 # ========== main ==============
 form = cgi.FieldStorage()
@@ -89,16 +88,19 @@ except:
 	print("</body></html>")
 	sys.exit(1)
 
+voit_data=load_data()
+
 if web_user_name in voit_data:
 	print("<h1>Ваш голос учтён!</h1>")
 	print("<p>Ранее Вы голосовали за: %s</p>" % voit_data["users"][web_user_name].voit.encode('utf8'))
 	print("<p>Теперь Вы изменили свой выбор на: %s</p>" % voit.encode('utf8'))
-	voit_data["users"][web_user_agent].voit=voit
+	voit_data["users"][web_user_name]["voit"]=voit
 	save_data(voit_data)
 else:
 	print("<h1>Ваш голос учтён!</h1>")
 	print("<p>Вы проголосовали за: %s</p>" % voit.encode('utf8'))
-	voit_data["users"][web_user_agent].voit=voit
+	voit_data["users"][web_user_name]={}
+	voit_data["users"][web_user_name]["voit"]=voit
 	save_data(voit_data)
 
 print("</body></html>")
