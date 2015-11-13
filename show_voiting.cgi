@@ -100,16 +100,16 @@ print("""
 				<TH COLSPAN=1>Вариант</TH>
 				<TH COLSPAN=1>Количество проголосовавших</TH>
 		</TR>
-		""" % conf.voit_descr)
+		""" % conf.voit_descr.encode('utf8'))
 index=1
 for var in result:
 	print("""<TR>
 		 <TD>%(index)d</TD>
 		 <TD>%(var)s</TD>
-		 <TD>%(num)s</TD>
+		 <TD>%(num)d</TD>
 		 </TR>""" % {\
 		 "index":index, \
-		 "var":var,\
+		 "var":var.encode('utf8'),\
 		 "num":result[var]\
 		 })
 	index+=1
