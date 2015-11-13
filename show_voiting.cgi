@@ -25,13 +25,16 @@ def load_data():
 			if conf.DEBUG:
 				print("DEBUG: try lock file for read")
 		except:
+			print("</body></html>")
 		 	print("error open file")
+		 	sys.exit(1)
 		try:
 			fcntl.flock(data_file.fileno(), fcntl.LOCK_EX)
 			if conf.DEBUG:
 				print("DEBUG: success lock file for read")
 		except:
 		 	print("error lock file")
+			print("</body></html>")
 		 	sys.exit(1)
 		data=pickle.load(data_file)
 		data_file.close()
