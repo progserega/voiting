@@ -28,7 +28,7 @@ def load_data():
 		try:
 			fcntl.flock(data_file.fileno(), fcntl.LOCK_EX)
 			if conf.DEBUG:
-				print("DEBUG: success lock file for write")
+				print("DEBUG: success lock file for read")
 		except:
 		 	print("error lock file")
 		 	sys.exit(1)
