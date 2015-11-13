@@ -13,11 +13,11 @@ import config as conf
 
 
 def save_data(data):
-	if DEBUG:
+	if conf.DEBUG:
 		print("%s/session.data" % conf.store_path)
 
 	data_file=open("%s/session.data" % conf.store_path,"wb")
-	if DEBUG:
+	if conf.DEBUG:
 		print("DEBUG: data_file:", data_file)
 	pickle.dump(data,data_file)
 	data_file.close()
@@ -27,31 +27,31 @@ def load_data():
 	data={}
 	reset=False
 	if os.path.exists(tmp_data_file):
-		if DEBUG:
+		if conf.DEBUG:
 			print("DEBUG: Загружаем файл промежуточных данных: '%s'" % tmp_data_file)
 		data_file = open(tmp_data_file,'rb')
 		data=pickle.load(data_file)
 		data_file.close()
-		if DEBUG:
+		if conf.DEBUG:
 			print("DEBUG: Загрузили файл промежуточных данных: '%s'" % tmp_data_file)
 
 		if not "date" in data:
-			if DEBUG:
+			if conf.DEBUG:
 				print("DEBUG: Битый файл сессии - сброс")
 			reset=True
 		else:
 			if data["date"] != time.strftime("%Y.%m.%d", time.localtime( time.time())):
 				# Это файл не от сегодняшней сессии, сохраняем его в лог и сбрасываем:
 				save_log(data)
-				if DEBUG:
+				if conf.DEBUG:
 					print("DEBUG: Это файл не от сегодняшней сессии, сохраняем его в лог и сбрасываем")
 				reset=True
 	else:
-		if DEBUG:
+		if conf.DEBUG:
 			print("DEBUG: Файл промежуточных данных не существует")
 		reset=True
 	if reset:
-		if DEBUG:
+		if conf.DEBUG:
 			print("DEBUG: Сброс промежуточных данных")
 		data["date"]=time.strftime("%Y.%m.%d", time.localtime( time.time()))
 		data["voit_descr"]=conf.voit_descr
