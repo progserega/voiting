@@ -45,13 +45,6 @@ def load_data():
 			if conf.DEBUG:
 				print("DEBUG: Битый файл сессии - сброс")
 			reset=True
-		else:
-			if data["date"] != time.strftime("%Y.%m.%d", time.localtime( time.time())):
-				# Это файл не от сегодняшней сессии, сохраняем его в лог и сбрасываем:
-				save_log(data)
-				if conf.DEBUG:
-					print("DEBUG: Это файл не от сегодняшней сессии, сохраняем его в лог и сбрасываем")
-				reset=True
 	else:
 		if conf.DEBUG:
 			print("DEBUG: Файл промежуточных данных не существует")
