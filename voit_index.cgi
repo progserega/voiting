@@ -68,7 +68,7 @@ for variant_name in conf.voit_names:
 print ("""
 </div>
 
-<P><input type=submit>
+<P><input type=submit value="Голосовать">
 </form>
 
 <p>Посмотреть текущий результат высказанных мнений можно по ссылке:
