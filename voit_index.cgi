@@ -21,7 +21,7 @@ print ("""
 <html>
 <HEAD>
 <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
-<TITLE>Голосование</TITLE>
+<TITLE>Мнение</TITLE>
 <META NAME="GENERATOR" CONTENT="OpenOffice.org 3.1  (Linux)">
 <META NAME="AUTHOR" CONTENT="Сергей Семёнов">
 <META NAME="CREATED" CONTENT="20100319;10431100">
@@ -53,7 +53,7 @@ font-size: 150%;
 
 </HEAD>
 
-<body><h1>Голосование</h1>
+<body><h1>Мнение</h1>
 """)
 print("""
 <form method=POST action="voit.cgi">
@@ -71,7 +71,7 @@ print ("""
 <P><input type=submit>
 </form>
 
-<p>Посмотреть текущий результат голосования можно по ссылке:
+<p>Посмотреть текущий результат высказанных мнений можно по ссылке:
 <a target="_self" 
 href="show_voiting.cgi"
 >

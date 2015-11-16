@@ -19,6 +19,11 @@ AuthUserFile /dev/null
 #require group CN=RBL_DEPT_340-SIT,DC=company,DC=ru
 #require group CN=RBL_DEPT_340-SIT
 
-# access to web interface:
+# access to web interface for users:
 #require user domain_user_name1 domain_user_name2
+
+# access to web interface for all valid users:
+require valid-user
+
+
 
