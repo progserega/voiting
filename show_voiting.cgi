@@ -87,6 +87,8 @@ for user in voit_data["users"]:
 		result[voit]+=1
 	else:
 		result[voit]=1
+	if conf.DEBUG:
+		print("<p>user: '%(user)s' проголосовал за: '%(var)s</p>" % {"user":user, "var":voit.encode('utf-8')})
 print("""
 		<h1>Результаты голосования:</h1>
 		<TABLE BORDER>
